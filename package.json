@@ -41,8 +41,23 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "quotes": ["error", "single"],
+      "semi": ["error", "never"]
+    }
   },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "overrides": [
+      {
+        "files": "*.js",
+        "options": {
+          "semi": false
+        }
+      }
+    ]
+  },  
   "browserslist": [
     "> 1%",
     "last 2 versions",
