@@ -1,5 +1,16 @@
 <template>
-  <section class="container"></section>
+  <section class="container">
+    <div v-for="product in products" :key="product.id">
+      <img
+        v-if="product.photos"
+        :src="product.photos[0].src"
+        :alt="product.photos[0].title"
+      />
+      <p>{{ product.price }}</p>
+      <h1>{{ product.name }}</h1>
+      <p>{{ product.description }}</p>
+    </div>
+  </section>
 </template>
 
 <script>
