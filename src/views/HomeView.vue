@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1>👍Compre ou Venda</h1>
+    <h1>Compre ou Venda</h1>
     <ProductsFind />
     <ProductList />
   </section>
