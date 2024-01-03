@@ -1,19 +1,19 @@
 <template>
   <section>
     <h1>👍Compre ou Venda</h1>
-    <FindProducts />
+    <ProductsFind />
     <ProductList />
   </section>
 </template>
 
 <script>
-import FindProducts from '@/components/FindProducts.vue'
+import ProductsFind from '@/components/ProductsFind.vue'
 import ProductList from '@/components/ProductList.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    FindProducts,
+    ProductsFind,
     ProductList,
   },
 }

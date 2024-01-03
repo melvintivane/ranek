@@ -3,7 +3,7 @@
 </template>
 <script>
 export default {
-  name: 'FindProducts',
+  name: 'ProductsFind',
 }
 </script>
 <style scoped></style>
