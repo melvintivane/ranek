@@ -83,4 +83,23 @@ main {
   flex-direction: column;
   min-height: 100vh;
 }
+
+input,
+textarea {
+  border-radius: 4px;
+  border: 1 solid white;
+  margin-bottom: 15px;
+  padding: 15px;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
+  transition: all 0.3s;
+  font-family: 'Roboto', sans-serif;
+}
+
+input:hover,
+input:focus,
+textarea:hover,
+textarea:focus {
+  border-color: #87f;
+}
 </style>
