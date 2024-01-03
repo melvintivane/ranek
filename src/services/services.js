@@ -8,4 +8,7 @@ export const api = {
   get(url) {
     return axiosInstance.get(url)
   },
+  post(url, body) {
+    return axiosInstance.post(url, body)
+  },
 }
