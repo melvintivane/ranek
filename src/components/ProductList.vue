@@ -15,6 +15,7 @@
 
 <script>
 import { api } from '@/services/services.js'
+import { serialize } from '@/helpers/helpers.js'
 
 export default {
   name: 'ProductList',
@@ -23,9 +24,20 @@ export default {
       products: null,
     }
   },
+  computed: {
+    url() {
+      let queryString = serialize(this.$route.query)
+      return '/product?_limit=9' + queryString
+    },
+  },
   methods: {
     getProducts() {
-      api.get('/product').then((response) => (this.products = response.data))
+      api.get(this.url).then((response) => (this.products = response.data))
+    },
+  },
+  watch: {
+    url() {
+      this.getProducts()
     },
   },
   created() {
