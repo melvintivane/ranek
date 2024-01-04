@@ -1,32 +1,42 @@
 <template>
   <section class="container">
-    {{ productsTotal }}
-    <div v-if="products && products.length" class="products">
-      <div class="product" v-for="product in products" :key="product.id">
-        <router-link to="/">
-          <img
-            v-if="product.photos"
-            :src="product.photos[0].src"
-            :alt="product.photos[0].title"
-          />
-          <p class="price">{{ product.price }}</p>
-          <h1 class="title">{{ product.name }}</h1>
-          <p>{{ product.description }}</p>
-        </router-link>
+    <transition>
+      <div v-if="products && products.length" class="products">
+        <div class="product" v-for="product in products" :key="product.id">
+          <router-link to="/">
+            <img
+              v-if="product.photos"
+              :src="product.photos[0].src"
+              :alt="product.photos[0].title"
+            />
+            <p class="price">{{ product.price }}</p>
+            <h1 class="title">{{ product.name }}</h1>
+            <p>{{ product.description }}</p>
+          </router-link>
+        </div>
+        <ProductsPagination
+          :productsTotal="productsTotal"
+          :productsPerPage="productsPerPage"
+        />
       </div>
-    </div>
-    <div v-else-if="products && products.length === 0" class="">
-      <p class="no__results">Product not found, try other terms.</p>
-    </div>
+      <div v-else-if="products && products.length === 0" class="">
+        <p class="no__results">Product not found, try other terms.</p>
+      </div>
+      <PageLoading v-else />
+    </transition>
   </section>
 </template>
 
 <script>
+import ProductsPagination from '@/components/ProductsPagination.vue'
 import { api } from '@/services/services.js'
 import { serialize } from '@/helpers/helpers.js'
 
 export default {
   name: 'ProductList',
+  components: {
+    ProductsPagination,
+  },
   data() {
     return {
       products: null,
@@ -42,10 +52,14 @@ export default {
   },
   methods: {
     getProducts() {
-      api.get(this.url).then((response) => {
-        this.productsTotal = Number(response.headers['x-total-count'])
-        this.products = response.data
-      })
+      setTimeout(
+        () =>
+          api.get(this.url).then((response) => {
+            this.productsTotal = Number(response.headers['x-total-count'])
+            this.products = response.data
+          }),
+        2000
+      )
     },
   },
   watch: {
