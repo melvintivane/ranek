@@ -1,7 +1,7 @@
 <template>
   <section class="container">
-    <transition>
-      <div v-if="products && products.length" class="products">
+    <transition mode="out-in">
+      <div v-if="products && products.length" class="products" key="products">
         <div class="product" v-for="product in products" :key="product.id">
           <router-link to="/">
             <img
@@ -19,10 +19,14 @@
           :productsPerPage="productsPerPage"
         />
       </div>
-      <div v-else-if="products && products.length === 0" class="">
+      <div
+        v-else-if="products && products.length === 0"
+        class=""
+        key="no__results"
+      >
         <p class="no__results">Product not found, try other terms.</p>
       </div>
-      <PageLoading v-else />
+      <PageLoading v-else key="loading" />
     </transition>
   </section>
 </template>
@@ -52,6 +56,7 @@ export default {
   },
   methods: {
     getProducts() {
+      this.products = null
       setTimeout(
         () =>
           api.get(this.url).then((response) => {
