@@ -29,19 +29,19 @@ export default {
   animation: dots 0.6s cubic-bezier(0.6, 0.1, 1, 0.4) infinite alternate;
 }
 
-.loading sapn:nth-child(1) {
+.loading span:nth-child(1) {
   animation-delay: 0.1s;
 }
 
-.loading sapn:nth-child(2) {
+.loading span:nth-child(2) {
   animation-delay: 0.2s;
 }
 
-.loading sapn:nth-child(3) {
+.loading span:nth-child(3) {
   animation-delay: 0.3s;
 }
 
-.loading sapn:nth-child(4) {
+.loading span:nth-child(4) {
   animation-delay: 0.4s;
 }
 
