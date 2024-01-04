@@ -1,5 +1,6 @@
 <template>
   <section class="container">
+    {{ productsTotal }}
     <div v-if="products && products.length" class="products">
       <div class="product" v-for="product in products" :key="product.id">
         <router-link to="/">
@@ -29,17 +30,22 @@ export default {
   data() {
     return {
       products: null,
+      productsPerPage: 9,
+      productsTotal: 0,
     }
   },
   computed: {
     url() {
-      let queryString = serialize(this.$route.query)
-      return '/product?_limit=9' + queryString
+      let query = serialize(this.$route.query)
+      return `/product?_limit=${this.productsPerPage}${query}`
     },
   },
   methods: {
     getProducts() {
-      api.get(this.url).then((response) => (this.products = response.data))
+      api.get(this.url).then((response) => {
+        this.productsTotal = Number(response.headers['x-total-count'])
+        this.products = response.data
+      })
     },
   },
   watch: {
