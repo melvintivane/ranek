@@ -9,7 +9,7 @@
               :src="product.photos[0].src"
               :alt="product.photos[0].title"
             />
-            <p class="price">{{ product.price }}</p>
+            <p class="price">{{ product.price | priceNumber }}</p>
             <h1 class="title">{{ product.name }}</h1>
             <p>{{ product.description }}</p>
           </router-link>
