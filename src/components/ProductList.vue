@@ -3,13 +3,13 @@
     <transition mode="out-in">
       <div v-if="products && products.length" class="products" key="products">
         <div class="product" v-for="product in products" :key="product.id">
-          <router-link to="/">
+          <router-link :to="{ name: 'product', params: { id: product.id } }">
             <img
               v-if="product.photos"
               :src="product.photos[0].src"
               :alt="product.photos[0].title"
             />
-            <p class="price">{{ product.price }}</p>
+            <p class="price">{{ product.price | priceNumber }}</p>
             <h1 class="title">{{ product.name }}</h1>
             <p>{{ product.description }}</p>
           </router-link>
@@ -55,6 +55,13 @@ export default {
     },
   },
   methods: {
+    setPage() {
+      //VER MAIS TARDE
+      // console.log(typeof this.$route.query.q !== 'undefined')
+      if (this.$route.query._page === undefined) {
+        this.$router.push({ query: { _page: 1 } })
+      }
+    },
     getProducts() {
       this.products = null
       setTimeout(
@@ -69,11 +76,12 @@ export default {
   },
   watch: {
     url() {
+      console.log(this.$route.query)
       this.getProducts()
     },
   },
   created() {
-    this.getProducts()
+    this.setPage(), this.getProducts()
   },
 }
 </script>

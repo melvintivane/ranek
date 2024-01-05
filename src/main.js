@@ -8,6 +8,18 @@ Vue.config.productionTip = false
 
 Vue.component('PageLoading', PageLoading)
 
+Vue.filter('priceNumber', (price) => {
+  price = Number(price)
+  if (!isNaN(price)) {
+    return price.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'MZN',
+    })
+  } else {
+    return ''
+  }
+})
+
 new Vue({
   router,
   store,
