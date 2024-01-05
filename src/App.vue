@@ -2,7 +2,9 @@
   <div id="app">
     <TheHeader />
     <main>
-      <router-view />
+      <transition mode="out-in">
+        <router-view />
+      </transition>
     </main>
     <TheFooter />
   </div>
