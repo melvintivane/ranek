@@ -9,7 +9,7 @@
         </ul>
         <div class="info">
           <h1>{{ product.name }}</h1>
-          <p class="price">{{ product.price }}</p>
+          <p class="price">{{ product.price | priceNumber }}</p>
           <p class="description">{{ product.description }}</p>
           <button v-if="product.sold === 'false'" class="btn">Buy</button>
           <button v-else class="btn" disabled>Buy</button>
