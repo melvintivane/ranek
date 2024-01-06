@@ -18,7 +18,7 @@
         id="password"
         v-model="login.password"
       />
-      <button class="btn" @click.prevent="logon">Login</button>
+      <button class="btn" @click.prevent="handleLogin">Login</button>
     </form>
     <p class="lost">
       <a href="/" target="_blank">Forget password? Click here.</a>
@@ -42,8 +42,9 @@ export default {
     }
   },
   methods: {
-    logon() {
-      this.$store.commit('UPDATE_LOGIN', true)
+    handleLogin() {
+      this.$store.dispatch('getUser', this.login.email)
+      this.$router.push({ name: 'user' })
     },
   },
 }
