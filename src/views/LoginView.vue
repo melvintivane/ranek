@@ -42,7 +42,9 @@ export default {
     }
   },
   methods: {
-    logon() {},
+    logon() {
+      this.$store.commit('UPDATE_LOGIN', true)
+    },
   },
 }
 </script>
