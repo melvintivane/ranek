@@ -4,9 +4,23 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {},
+  state: {
+    login: false,
+    user: {
+      id: '',
+      email: '',
+      name: '',
+      password: '',
+      city: '',
+      address: '',
+    },
+  },
   getters: {},
-  mutations: {},
+  mutations: {
+    UPDATE_LOGIN(state, payload) {
+      state.login = payload
+    },
+  },
   actions: {},
   modules: {},
 })
