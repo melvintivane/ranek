@@ -56,6 +56,10 @@ img {
   display: block;
 }
 
+label {
+  margin-bottom: 5px;
+}
+
 main {
   flex: 1;
 }
