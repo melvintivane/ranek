@@ -92,12 +92,13 @@ main {
 
 input,
 textarea {
-  border-radius: 4px;
-  border: 1 solid white;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #87f;
+  outline-color: #87f;
   margin-bottom: 15px;
-  padding: 15px;
+  border-radius: 4px;
   font-size: 1rem;
-  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
   transition: all 0.3s;
   font-family: 'Roboto', sans-serif;
 }
