@@ -40,6 +40,7 @@ form {
   padding: 20px;
   border: none;
   outline-color: #87f;
+  box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
 }
 
 #magnify {
