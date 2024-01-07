@@ -20,7 +20,7 @@
       />
       <button class="btn" @click.prevent="handleLogin">Login</button>
     </form>
-    <p class="lost">
+    <p class="forget__password">
       <a href="/" target="_blank">Forget password? Click here.</a>
     </p>
     <LoginCreate />
@@ -83,12 +83,12 @@ form {
   margin-right: auto;
 }
 
-.lost {
+.forget__password {
   text-align: center;
   margin: 20px auto 0 auto;
 }
 
-.lost:hover {
+.forget__password:hover {
   color: #87f;
   text-decoration: underline;
 }
