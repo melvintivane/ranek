@@ -5,13 +5,15 @@ import { api } from '@/services/services.js'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  strict: true,
   state: {
     login: false,
     user: {
       id: '',
       email: '',
-      name: '',
+      username: '',
       password: '',
+      state: '',
       city: '',
       address: '',
     },
@@ -22,7 +24,7 @@ export default new Vuex.Store({
       state.login = payload
     },
     UPDATE_USER(state, payload) {
-      state.user = payload
+      state.user = { ...state.user, ...payload }
     },
   },
   actions: {
