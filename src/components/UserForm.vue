@@ -8,7 +8,7 @@
       name="name"
       v-model="username"
     />
-    <!-- <label for="email">Email</label>
+    <label for="email">Email</label>
     <input
       autocomplete="email"
       type="email"
@@ -47,7 +47,7 @@
       id="city"
       name="city"
       v-model="city"
-    /> -->
+    />
     <div>
       <slot></slot>
     </div>
@@ -55,17 +55,24 @@
 </template>
 
 <script>
+import { mapFields } from '@/helpers/helpers.js'
+
 export default {
   name: 'userForm',
   computed: {
-    username: {
-      get() {
-        return this.$store.state.name
-      },
-      set(value) {
-        this.$store.commit('UPDATE_USER', { name: value })
-      },
-    },
+    ...mapFields({
+      fields: [
+        'id',
+        'email',
+        'username',
+        'password',
+        'state',
+        'city',
+        'address',
+      ],
+      base: 'user',
+      mutation: 'UPDATE_USER',
+    }),
   },
 }
 </script>
