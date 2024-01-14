@@ -12,3 +12,7 @@ export const api = {
     return axiosInstance.post(url, body)
   },
 }
+
+export function getCep(cep) {
+  return axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+}
