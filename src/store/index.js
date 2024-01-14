@@ -34,6 +34,10 @@ export default new Vuex.Store({
         context.commit('UPDATE_LOGIN', true)
       })
     },
+    createUser(context, payload) {
+      context.commit('UPDATE_USER', { id: payload.id })
+      api.post('/user', payload)
+    },
   },
   modules: {},
 })
